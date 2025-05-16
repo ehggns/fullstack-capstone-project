@@ -1,4 +1,3 @@
-/*jshint esversion: 8 */
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './Profile.css'
@@ -6,7 +5,7 @@ import {urlConfig} from '../../config';
 import { useAppContext } from '../../context/AuthContext';
 
 const Profile = () => {
- const [userDetails, setUserDetails] = useState({});
+  const [userDetails, setUserDetails] = useState({});
  const [updatedDetails, setUpdatedDetails] = useState({});
  const {setUserName} = useAppContext();
  const [changed, setChanged] = useState("");
@@ -135,4 +134,4 @@ return (
 );
 };
 
-export default Profile;
+export default Profile; 

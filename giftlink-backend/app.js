@@ -1,11 +1,12 @@
 /*jshint esversion: 8 */
+
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const pinoLogger = require('./logger');
 
 const connectToDatabase = require('./models/db');
-// const {loadData} = require("./util/import-mongo/index");
+const {loadData} = require("./util/import-mongo/index");
 
 
 const app = express();
@@ -21,19 +22,21 @@ connectToDatabase().then(() => {
 
 app.use(express.json());
 
-// Route files
+// Route files 
 const giftRoutes = require('./routes/giftRoutes');
 const authRoutes = require('./routes/authRoutes');
 const searchRoutes = require('./routes/searchRoutes');
+ 
 const pinoHttp = require('pino-http');
 const logger = require('./logger');
 
 app.use(pinoHttp({ logger }));
-// Use Routes
+
+// Use Routes 
 app.use('/api/gifts', giftRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/search', searchRoutes);
-
+ 
 // Global Error Handler
 app.use((err, req, res, next) => {
     console.error(err);
@@ -46,4 +49,4 @@ app.get("/",(req,res)=>{
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
-});
+}); 

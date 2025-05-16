@@ -1,4 +1,3 @@
-/*jshint esversion: 8 */
 import React, { useState,useEffect } from 'react';
 //Step 1 - Task 1
 import {urlConfig} from '../../config';
@@ -100,7 +99,7 @@ function LoginPage() {
                             {/*Step 2: Task 6*/}
                             <span style={{color:'red',height:'.5cm',display:'block',fontStyle:'italic',fontSize:'12px'}}>{incorrect}</span>
                         </div>
-                        <button className="btn btn-primary w-100 mb-3" onClick={handleLogin}>Login</button>
+                         <button className="btn btn-primary w-100 mb-3" onClick={handleLogin}>Login</button>
                         <p className="mt-4 text-center">
                             New here? <a href="/app/register" className="text-primary">Register Here</a>
                         </p>

@@ -1,19 +1,20 @@
-/*jshint esversion: 8 */
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {urlConfig} from '../../config';
+
 function MainPage() {
-    const [gifts, setGifts] = useState([])
+    const [gifts, setGifts] = useState([]);
     const navigate = useNavigate();
+
     useEffect(() => {
         // fetch all gifts
         const fetchGifts = async () => {
             try {
-                let url = `${urlConfig.backendUrl}/api/gifts`
+                let url = `${urlConfig.backendUrl}/api/gifts`;
                 const response = await fetch(url);
                 if (!response.ok) {
                     //something went wrong
-                    throw new Error(`HTTP error; ${response.status}`)
+                    throw new Error(`HTTP error; ${response.status}`);
                 }
                 const data = await response.json();
                 setGifts(data);
@@ -21,18 +22,23 @@ function MainPage() {
                 console.log('Fetch error: ' + error.message);
             }
         };
+
         fetchGifts();
     }, []);
+
     const goToDetailsPage = (productId) => {
         navigate(`/app/product/${productId}`);
     };
+
     const formatDate = (timestamp) => {
         const date = new Date(timestamp * 1000);
         return date.toLocaleString('default', { month: 'long', day: 'numeric', year: 'numeric' });
     };
+
     const getConditionClass = (condition) => {
         return condition === "New" ? "list-group-item-success" : "list-group-item-warning";
     };
+
     return (
         <div className="container mt-5">
             <div className="row">

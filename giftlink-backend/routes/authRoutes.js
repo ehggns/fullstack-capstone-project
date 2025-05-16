@@ -1,5 +1,3 @@
-/*jshint esversion: 8 */
-
 const express = require('express');
 const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -7,9 +5,10 @@ const connectToDatabase = require('../models/db');
 const router = express.Router();
 const dotenv = require('dotenv');
 const pino = require('pino');  // Import Pino logger
-
+ 
 //Task 1: Use the `body`,`validationResult` from `express-validator` for input validation
 const { body, validationResult } = require('express-validator');
+
 
 const logger = pino();  // Create a Pino logger instance
 
@@ -20,7 +19,7 @@ router.post('/register', async (req, res) => {
     try {
       //Connect to `giftsdb` in MongoDB through `connectToDatabase` in `db.js`.
       const db = await connectToDatabase();
-      const collection = db.collection("users");
+      const collection = db.collection("users"); 
       const existingEmail = await collection.findOne({ email: req.body.email });
 
         if (existingEmail) {
@@ -45,7 +44,7 @@ router.post('/register', async (req, res) => {
                 id: newUser.insertedId,
             },
         };
-
+ 
         const authtoken = jwt.sign(payload, JWT_SECRET);
         logger.info('User registered successfully');
         res.json({ authtoken,email });
@@ -54,7 +53,7 @@ router.post('/register', async (req, res) => {
         return res.status(500).send('Internal server error');
     }
 });
-
+ 
 router.post('/login', async (req, res) => {
     console.log("\n\n Inside login")
 

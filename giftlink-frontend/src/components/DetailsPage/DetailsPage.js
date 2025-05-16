@@ -1,9 +1,8 @@
-/*jshint esversion: 8 */
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import './DetailsPage.css';
 import {urlConfig} from '../../config';
-
+ 
 function DetailsPage() {
     const navigate = useNavigate();
     const { productId } = useParams();
@@ -42,7 +41,7 @@ function DetailsPage() {
         window.scrollTo(0, 0);
 
     }, [productId, navigate]);
-
+ 
     const handleBackClick = () => {
         // Task 4: Handle back click
         navigate(-1);
@@ -126,4 +125,4 @@ function DetailsPage() {
     );
 }
 
-export default DetailsPage;
+export default DetailsPage; 
