@@ -1,3 +1,5 @@
+/*jshint esversion: 8 */
+
 const express = require('express');
 const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -8,7 +10,6 @@ const pino = require('pino');  // Import Pino logger
 
 //Task 1: Use the `body`,`validationResult` from `express-validator` for input validation
 const { body, validationResult } = require('express-validator');
-
 
 const logger = pino();  // Create a Pino logger instance
 
