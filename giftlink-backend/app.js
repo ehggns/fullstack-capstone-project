@@ -5,7 +5,7 @@ const cors = require('cors');
 const pinoLogger = require('./logger');
 
 const connectToDatabase = require('./models/db');
-const {loadData} = require("./util/import-mongo/index");
+// const {loadData} = require("./util/import-mongo/index");
 
 
 const app = express();
@@ -29,7 +29,6 @@ const pinoHttp = require('pino-http');
 const logger = require('./logger');
 
 app.use(pinoHttp({ logger }));
-app.use('/api/auth', authRoutes);
 // Use Routes
 app.use('/api/gifts', giftRoutes);
 app.use('/api/auth', authRoutes);
